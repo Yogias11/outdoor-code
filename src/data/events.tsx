@@ -5,6 +5,9 @@ export const activities = [
     location: "Lombok, NTB",
     date: "9 Oct - 17 Jun 2026",
     price: "Rp 850.000",
+    priceValue: 850000,
+    category: "Gunung",
+    status: "Open",
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
     description:
@@ -17,6 +20,9 @@ export const activities = [
     location: "Magelang, Jawa Tengah",
     date: "21 Jun 2026",
     price: "Rp 350.000",
+    priceValue: 350000,
+    category: "Gunung",
+    status: "Open",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     description:
@@ -29,6 +35,9 @@ export const activities = [
     location: "Probolinggo, Jawa Timur",
     date: "12 Jul 2026",
     price: "Rp 450.000",
+    priceValue: 450000,
+    category: "Camping",
+    status: "Open",
     image:
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
     description:
@@ -41,6 +50,9 @@ export const activities = [
     location: "Banyuwangi",
     date: "20 Aug 2026",
     price: "Rp 500.000",
+    priceValue: 500000,
+    category: "Gunung",
+    status: "Closed",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
     description:

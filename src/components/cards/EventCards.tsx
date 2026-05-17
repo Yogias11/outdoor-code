@@ -1,12 +1,15 @@
 import {
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+
+import { useFavoriteStore } from "@/src/store/favoriteStore";
 
 type EventCardProps = {
   id: string;
@@ -18,6 +21,7 @@ type EventCardProps = {
   status?: string;
 };
 
+
 export default function EventCard({
   id,
   title,
@@ -27,13 +31,22 @@ export default function EventCard({
   image,
   status = "OPEN",
 }: EventCardProps) {
+
+   const isFavorite = useFavoriteStore(
+    (state) => state.isFavorite(id)
+  );
+
+  const toggleFavorite = useFavoriteStore(
+    (state) => state.toggleFavorite
+  );
+  
   return (
     <TouchableOpacity
       activeOpacity={0.9}
       style={styles.card}
       onPress={() =>
         router.push({
-            pathname: "/event/[id]",
+            pathname: "/events/[id]",
             params: { id },
         })
     }
@@ -44,6 +57,23 @@ export default function EventCard({
         }}
         style={styles.image}
       />
+
+      <TouchableOpacity
+        style={styles.favoriteButton}
+        onPress={() => toggleFavorite(id)}
+      >
+        <Ionicons
+          name={
+            isFavorite
+              ? "heart"
+              : "heart-outline"
+          }
+          size={22}
+          color={
+            isFavorite ? "#EF4444" : "#fff"
+          }
+        />
+      </TouchableOpacity>
 
       <View style={styles.content}>
         <View style={styles.badge}>
@@ -124,5 +154,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "800",
     color: "#166534",
+  },
+
+  favoriteButton: {
+    position: "absolute",
+    top: 16,
+    right: 16,
+
+    width: 40,
+    height: 40,
+
+    borderRadius: 999,
+
+    backgroundColor: "rgba(0,0,0,0.35)",
+
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

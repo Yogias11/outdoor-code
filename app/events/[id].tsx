@@ -1,9 +1,11 @@
 import {
-    ScrollView,
-    StyleSheet,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
 } from "react-native";
 
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 import { activities } from "@/src/data/events";
 
@@ -36,6 +38,22 @@ export default function EventDetailScreen() {
       <DetailSummary />
 
       <FacilityList />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() =>
+          router.push({
+            pathname: "/events/register/[id]",
+            params: {
+              id: event.id,
+            },
+          })
+        }
+      >
+        <Text style={styles.buttonText}>
+          Daftar Event
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -44,5 +62,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  button: {
+    marginHorizontal: 20,
+    marginBottom: 40,
+    backgroundColor: "#166534",
+    paddingVertical: 18,
+    borderRadius: 18,
+    alignItems: "center",
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
   },
 });

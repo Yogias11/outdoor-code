@@ -6,7 +6,6 @@ import {
 
 import { useMemo, useState } from "react";
 
-import CategoryList from "@/src/components/home/CategoryList";
 import HeroSection from "@/src/components/home/HeroSection";
 import PopularSection from "@/src/components/home/PopularSection";
 import SearchBar from "@/src/components/home/SearchBar";
@@ -33,15 +32,15 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
         <HeroSection />
 
         <SearchBar
           value={search}
           onChangeText={setSearch}
         />
-
-        <CategoryList />
 
         <PopularSection
           data={filteredActivities}

@@ -1,10 +1,11 @@
+import { router } from "expo-router";
 import {
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    useWindowDimensions,
-    View,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
 } from "react-native";
 
 import EventCard from "../cards/EventCards";
@@ -27,7 +28,7 @@ export default function PopularSection({
           Kegiatan Populer
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/activity")}>
           <Text style={styles.seeAll}>
             Lihat semua
           </Text>
